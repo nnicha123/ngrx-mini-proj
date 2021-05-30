@@ -1,0 +1,62 @@
+{
+  "users":[
+    {
+      "id":"1",
+      "firstName":"John",
+      "lastName":"Doe",
+      "email":"john@gmail.com",
+      "age":34,
+      "companyId":"1"
+    },
+    {
+      "id":"2",
+      "firstName":"Sally",
+      "lastName":"Jo",
+      "email":"sally@gmail.com",
+      "age":22,
+      "companyId":"1"
+    },
+    {
+      "id":"3",
+      "firstName":"Jack",
+      "lastName":"Chan",
+      "email":"jack@gmail.com",
+      "age":25,
+      "companyId":"1"
+    },
+    {
+      "id":"4",
+      "firstName":"Liney",
+      "lastName":"Lueng",
+      "email":"liney@gmail.com",
+      "age":22,
+      "companyId":"2"
+    },
+    {
+      "id":"5",
+      "firstName":"Pim",
+      "lastName":"Zu",
+      "email":"pim@gmail.com",
+      "age":57,
+      "companyId":"3"
+    }
+  ],
+  "companies":[
+    {
+      "id":"1",
+      "name":"Apple",
+      "description":"Apple Inc. is an American multinational technology company headquartered in Cupertino, California, that designs, develops, and sells consumer electronics, computer software, and online services."
+    },
+    {
+      "id":"2",
+      "name":"Microsoft",
+      "description":"Microsoft Corporation is an American multinational technology company with headquarters in Redmond, Washington. It develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services."
+    },
+    {
+      "id":"3",
+      "name":"Google",
+      "description":"Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware."
+    }
+    
+  ]
+}
