@@ -5,20 +5,24 @@ import * as fromActions from '../init/init.action';
 
 export interface State extends EntityState<User[]> {
   // additional state property
-  selectedUserId: string | null;
+  // selectedUserId: string | null;
 }
 
 export const adapter: EntityAdapter<User[]> = createEntityAdapter<User[]>();
 
 export const initialState: State = adapter.getInitialState({
   // additional entity state properties
-  selectedUserId: null,
+  ids:'0',
+  // selectedUserId: null,
 });
 
 export const usersReducer = createReducer(
   initialState,
   on(fromActions.initUsersSuccess, (state, { users }) => {
-    return { ...state, users };
+    return {
+      ...initialState,
+      data:users
+    }
   }),
 );
  
