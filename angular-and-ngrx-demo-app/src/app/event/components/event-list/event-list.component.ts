@@ -7,6 +7,6 @@ import { Attendee } from 'src/app/models';
   styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent {
-  @Input() attendees:Attendee[] = [];
+  @Input() attendees:Attendee[]|null = null;
 
 }

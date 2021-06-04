@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Component } from '@angular/core';
+import { Store,select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Attendee } from 'src/app/models';
+import { StartSpinner, StopSpinner } from 'src/app/state/spinner/spinner.actions';
+import { State } from 'src/app/state/spinner/spinner.reducer';
 import { EventService } from '../../services/event.service';
 
 @Component({
@@ -8,21 +11,24 @@ import { EventService } from '../../services/event.service';
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.scss']
 })
-export class EventComponent implements OnInit {
-  attendees$:Observable<Attendee[]> = of([]);
-  constructor(private eventService:EventService) { }
-
-  ngOnInit(): void {
-    this.getAttendees();
-  }
-
-  getAttendees(){
+export class EventComponent {
+  spinner$:Observable<boolean>;
+  attendees$:Observable<Attendee[]>;
+  constructor(private store:Store<State>,private eventService:EventService) {
     this.attendees$ = this.eventService.getAttendees();
-  }
+    this.spinner$ = this.store.pipe(select(state => state.isOn))
+   }
 
-  // addAttendee(attendee:Attendee){
-  //   this.attendees = [...this.attendees, attendee];
-  //   console.log('TCL: EventComponent -> addAttendee -> this.attendees', this.attendees)
-  // }
+   getAttendees(){
+     this.attendees$ = this.eventService.getAttendees();
+   }
+
+  addAttendee(attendee:Attendee){
+    this.store.dispatch(new StartSpinner());
+    this.eventService.addAttendee(attendee).subscribe(() => {
+      this.store.dispatch(new StopSpinner());
+      this.getAttendees();
+    });
+  }
 
 }

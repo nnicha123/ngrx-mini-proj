@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Attendee } from 'src/app/models';
@@ -7,15 +8,12 @@ import { Attendee } from 'src/app/models';
 })
 export class EventService {
 
-  constructor() { }
+  constructor(private httpClient:HttpClient) { }
 
   getAttendees():Observable<Attendee[]>{
-    return of([
-      {
-        name:'Duncan',
-        attending:true,
-        guests:0
-      }
-    ] as Attendee[])
+    return this.httpClient.get<Attendee[]>('api/attendees');
+  }
+  addAttendee(attendee:Attendee):Observable<Attendee>{
+    return this.httpClient.post<Attendee>('api/attendees',attendee);
   }
 }
