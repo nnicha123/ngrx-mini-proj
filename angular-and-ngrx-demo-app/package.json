@@ -19,6 +19,8 @@
     "@angular/platform-browser-dynamic": "~12.0.2",
     "@angular/router": "~12.0.2",
     "@davinkevin/jest": "^0.1.0",
+    "@ngrx/entity": "^12.0.0",
+    "@ngrx/router-store": "^12.0.0",
     "@ngrx/store": "^12.0.0",
     "@ngrx/store-devtools": "^12.0.0",
     "rxjs": "~6.6.0",

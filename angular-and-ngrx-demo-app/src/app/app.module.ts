@@ -8,9 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './app.db';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment.prod';
 import { reducer } from './state/spinner/spinner.reducer';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,10 +30,12 @@ import { reducer } from './state/spinner/spinner.reducer';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 100 }),
     StoreModule.forRoot({ spinner: reducer }),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       name: 'NgRx Demo App',
       logOnly: environment.production
-    })
+    }),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
